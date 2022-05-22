@@ -1,0 +1,19 @@
+apt update -y
+apt upgrade -y
+apt install screen -y
+apt upgrade screen -y
+apt update -y
+apt upgrade -y
+
+apt install -y docker.io
+systemctl enable docker --now
+docker
+usermod -aG docker $USER
+
+apt update -y
+apt install -y docker-ce docker-ce-cli containerd.io
+systemctl unmask docker.service
+systemctl unmask docker.socket
+systemctl start docker.service
+chmod 666 /var/run/docker.sock
+docker run hello-world
